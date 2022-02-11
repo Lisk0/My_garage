@@ -8,4 +8,8 @@ class Labels {
   static const String manufactionYear = 'Year of production: ';
   static const String vehicleData = 'Vehicle data';
   static const String delete = 'Delete';
+  static const String addVehicle = 'Add Vehicle';
+  static const String chooseDate = 'Choose Date';
+  static const String noDate = 'Please select registration date';
+  static const String pickedDate = 'Registration date: ';
 }

@@ -62,6 +62,8 @@ class _GarageScreenState extends State<GarageScreen> {
             ),
           ],
         ),
-        body: const Text('List view'));
+        body: ListView(
+          children: _garage.map((item) => Text(item.model)).toList(),
+        ));
   }
 }

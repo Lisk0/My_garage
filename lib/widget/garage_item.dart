@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:transactions/helper/logos.dart';
 import '../model/vehicle.dart';
+import '../screen/vehicle_screen.dart';
 
 class GarageItem extends StatelessWidget {
   const GarageItem({Key? key, required this.current, required this.del})
@@ -9,7 +10,17 @@ class GarageItem extends StatelessWidget {
   final Vehicle current;
   final Function del;
 
-  void selectVehicle() {}
+  void selectVehicle(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return VehicleScreen(
+            current: current,
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +48,7 @@ class GarageItem extends StatelessWidget {
     }
 
     return InkWell(
-        onTap: () => selectVehicle(),
+        onTap: () => selectVehicle(context),
         child: Container(
           padding: const EdgeInsets.all(10),
           alignment: Alignment.topCenter,

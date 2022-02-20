@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:transactions/model/vehicle.dart';
+import '../widget/garage_item.dart';
 
 class GarageScreen extends StatefulWidget {
   const GarageScreen({Key? key}) : super(key: key);
@@ -51,19 +52,37 @@ class _GarageScreenState extends State<GarageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Garage'),
-          centerTitle: false,
-          elevation: 5,
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: () => placeholder(),
-            ),
-          ],
+      appBar: AppBar(
+        title: const Text('Garage'),
+        centerTitle: false,
+        elevation: 5,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => placeholder(),
+          ),
+        ],
+      ),
+      body: GridView(
+        padding: const EdgeInsets.all(5),
+        children: _garage
+            .map(
+              (item) => GarageItem(current: item, del: placeholder),
+            )
+            .toList(),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 200,
+          mainAxisExtent: 144,
+          childAspectRatio: 3 / 2,
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
         ),
-        body: ListView(
-          children: _garage.map((item) => Text(item.model)).toList(),
-        ));
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () => placeholder(),
+      ),
+    );
   }
 }

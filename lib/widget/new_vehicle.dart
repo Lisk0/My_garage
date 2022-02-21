@@ -27,6 +27,21 @@ class _NewVehicleState extends State<NewVehicle> {
   ];
   DateTime? _selectedDate;
 
+  void _alertDialog(String title, String description) {
+    showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+              title: Text(title),
+              content: Text(description),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => Navigator.pop(context, 'OK'),
+                  child: const Text('OK'),
+                ),
+              ],
+            ));
+  }
+
   void _submitData() {
     if (_manController.text.isEmpty ||
         _modelController.text.isEmpty ||
@@ -34,9 +49,11 @@ class _NewVehicleState extends State<NewVehicle> {
         _dspController.text.isEmpty ||
         _yearController.text.isEmpty ||
         _fuelController.text.isEmpty) {
+      _alertDialog(Labels.emptyTitle, Labels.emptyDescription);
       return;
     }
     if (_selectedDate == null) {
+      _alertDialog(Labels.emptyRegDateTitle, Labels.emptyRegDateDescription);
       return;
     }
 
@@ -45,7 +62,22 @@ class _NewVehicleState extends State<NewVehicle> {
     final horsepower = int.parse(_hpController.text);
     final displacement = int.parse(_dspController.text);
     final manufactionYear = int.parse(_yearController.text);
-    if (manufactionYear < 1900 || horsepower <= 0 || displacement <= 0) return;
+    if (horsepower <= 0) {
+      _alertDialog(Labels.invalidValueTitle, Labels.invalidHPDescription);
+      return;
+    }
+    if (displacement <= 0) {
+      _alertDialog(Labels.invalidValueTitle, Labels.invalidDspDescription);
+      return;
+    }
+    if (manufactionYear <= 1900) {
+      _alertDialog(Labels.invalidValueTitle, Labels.invalidManYearDescription);
+      return;
+    }
+    if (manufactionYear > DateTime.now().year) {
+      _alertDialog(Labels.invalidValueTitle, Labels.futureYearDescription);
+      return;
+    }
 
     late final FuelType fuel;
     final fl = _fuelController.text;

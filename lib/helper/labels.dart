@@ -26,6 +26,6 @@ class Labels {
 
   static const String futureYearDescription =
       'Year of production must not be in the future';
-  static const String regExpirationIn = 'Registration expires in: ';
+  static const String regExpirationIn = 'Register in: ';
   static const String regExpired = 'Registration expired';
 }

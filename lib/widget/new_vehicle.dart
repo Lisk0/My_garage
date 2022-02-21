@@ -138,7 +138,6 @@ class _NewVehicleState extends State<NewVehicle> {
             TextField(
               decoration: const InputDecoration(labelText: Labels.model),
               controller: _modelController,
-              keyboardType: TextInputType.number,
               onSubmitted: (_) => _submitData(),
             ),
             SelectFormField(

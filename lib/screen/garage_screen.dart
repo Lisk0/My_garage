@@ -18,7 +18,7 @@ class _GarageScreenState extends State<GarageScreen> {
         model: 'A4',
         horsepower: 145,
         displacement: 1600,
-        registrationDate: DateTime.parse("2020-04-22"),
+        registrationDate: DateTime.parse("2021-02-28"),
         fuel: FuelType.gasoline,
         manufactionYear: 2011),
     Vehicle(
@@ -27,7 +27,7 @@ class _GarageScreenState extends State<GarageScreen> {
         model: 'Golf 5',
         horsepower: 90,
         displacement: 1997,
-        registrationDate: DateTime.parse("2020-07-25"),
+        registrationDate: DateTime.parse("2021-07-25"),
         fuel: FuelType.diesel,
         manufactionYear: 2007),
     Vehicle(

@@ -68,7 +68,7 @@ class _GarageScreenState extends State<GarageScreen> {
         padding: const EdgeInsets.all(5),
         children: _garage
             .map(
-              (item) => GarageItem(current: item, del: placeholder),
+              (item) => GarageItem(current: item, del: _deleteVehicle),
             )
             .toList(),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -122,5 +122,11 @@ class _GarageScreenState extends State<GarageScreen> {
         );
       },
     );
+  }
+
+  void _deleteVehicle(int id) {
+    setState(() {
+      _garage.removeWhere((v) => v.id == id);
+    });
   }
 }

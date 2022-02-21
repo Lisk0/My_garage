@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import '../model/vehicle.dart';
 import '../widget/column_text.dart';
 import '../helper/labels.dart';
-import 'package:flutter/services.dart';
-
 import '../helper/logos.dart';
 
 class VehicleScreen extends StatelessWidget {

@@ -1,7 +1,7 @@
 enum FuelType { gasoline, diesel, electric }
 
 class Vehicle {
-  final int id;
+  final String id;
   final String manufacturer;
   final String model;
   final int horsepower;

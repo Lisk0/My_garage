@@ -14,7 +14,7 @@ class GarageScreen extends StatefulWidget {
 class _GarageScreenState extends State<GarageScreen> {
   final List<Vehicle> _garage = [
     Vehicle(
-        id: 1,
+        id: DateTime(2000).toString(),
         manufacturer: 'Audi',
         model: 'A4',
         horsepower: 145,
@@ -23,7 +23,7 @@ class _GarageScreenState extends State<GarageScreen> {
         fuel: FuelType.gasoline,
         manufactionYear: 2011),
     Vehicle(
-        id: 2,
+        id: DateTime(2001).toString(),
         manufacturer: 'Volkswagen',
         model: 'Golf 5',
         horsepower: 90,
@@ -32,7 +32,7 @@ class _GarageScreenState extends State<GarageScreen> {
         fuel: FuelType.diesel,
         manufactionYear: 2007),
     Vehicle(
-        id: 3,
+        id: DateTime(2003).toString(),
         manufacturer: 'Mercedes',
         model: 'S400d',
         horsepower: 245,
@@ -41,7 +41,7 @@ class _GarageScreenState extends State<GarageScreen> {
         fuel: FuelType.diesel,
         manufactionYear: 2019),
     Vehicle(
-        id: 4,
+        id: DateTime(2004).toString(),
         manufacturer: 'Tesla',
         model: 'Model S',
         horsepower: 340,
@@ -97,7 +97,7 @@ class _GarageScreenState extends State<GarageScreen> {
       FuelType fuel,
       int manufactionYear) {
     final veh = Vehicle(
-        id: _garage.length,
+        id: DateTime.now().toString(),
         manufacturer: manufacturer,
         model: model,
         horsepower: horsepower,
@@ -125,7 +125,7 @@ class _GarageScreenState extends State<GarageScreen> {
     );
   }
 
-  void _deleteVehicle(int id) {
+  void _deleteVehicle(String id) {
     setState(() {
       _garage.removeWhere((v) => v.id == id);
     });

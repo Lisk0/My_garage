@@ -48,7 +48,7 @@ class SplashScreen extends StatelessWidget {
                       fontWeight: FontWeight.w400),
                 ),
                 Text(
-                  '2021',
+                  '2022',
                   style: GoogleFonts.gideonRoman(
                       fontSize: 24,
                       color: Colors.white,

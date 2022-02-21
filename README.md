@@ -41,6 +41,9 @@ Application consists of three screens:
 Application tested on: P30 Pro, Pixel 2 and Pixel 3 android devices.
 
 
+![Screenshot](/screenshot.jpg?raw=true "Pixel 2")
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
 ## Getting Started

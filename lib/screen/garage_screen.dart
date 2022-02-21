@@ -16,7 +16,7 @@ class _GarageScreenState extends State<GarageScreen> {
     Vehicle(
         id: 1,
         manufacturer: 'Audi',
-        model: 'X1',
+        model: 'A4',
         horsepower: 145,
         displacement: 1600,
         registrationDate: DateTime.parse("2020-04-22"),

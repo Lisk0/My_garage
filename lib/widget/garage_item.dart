@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transactions/helper/logos.dart';
-import '../model/vehicle.dart';
+import '../helper/logos.dart';
 import '../screen/vehicle_screen.dart';
+import '../model/vehicle.dart';
 
 class GarageItem extends StatelessWidget {
   const GarageItem({Key? key, required this.current, required this.del})
@@ -16,6 +16,7 @@ class GarageItem extends StatelessWidget {
         builder: (_) {
           return VehicleScreen(
             current: current,
+            delete: del,
           );
         },
       ),

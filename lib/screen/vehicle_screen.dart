@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:transactions/model/vehicle.dart';
-import 'package:transactions/widget/column_text.dart';
+import '../model/vehicle.dart';
+import '../widget/column_text.dart';
 import '../helper/labels.dart';
 import 'package:flutter/services.dart';
 
 import '../helper/logos.dart';
 
 class VehicleScreen extends StatelessWidget {
-  const VehicleScreen({Key? key, required this.current}) : super(key: key);
+  const VehicleScreen({Key? key, required this.current, required this.delete})
+      : super(key: key);
   final Vehicle current;
+  final Function delete;
 
-  void delete() {}
+  void dlt(BuildContext context) {
+    delete(current.id);
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +55,7 @@ class VehicleScreen extends StatelessWidget {
                     label: Labels.displacement,
                     text: current.displacement.toString() + ' cc'),
                 ElevatedButton(
-                  onPressed: () => delete(),
+                  onPressed: () => dlt(context),
                   child: const Text(
                     Labels.delete,
                     style: TextStyle(

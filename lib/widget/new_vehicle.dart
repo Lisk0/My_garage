@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transactions/model/vehicle.dart';
 import 'package:select_form_field/select_form_field.dart';
 
+import '../model/vehicle.dart';
 import '../helper/labels.dart';
 
 class NewVehicle extends StatefulWidget {

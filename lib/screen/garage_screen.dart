@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:transactions/model/vehicle.dart';
+import '../model/vehicle.dart';
 import '../widget/garage_item.dart';
+import '../widget/new_vehicle.dart';
 
 class GarageScreen extends StatefulWidget {
   const GarageScreen({Key? key}) : super(key: key);
@@ -59,7 +60,7 @@ class _GarageScreenState extends State<GarageScreen> {
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () => placeholder(),
+            onPressed: () => _startAddNewVehicle(context),
           ),
         ],
       ),
@@ -81,8 +82,45 @@ class _GarageScreenState extends State<GarageScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () => placeholder(),
+        onPressed: () => _startAddNewVehicle(context),
       ),
+    );
+  }
+
+  void _addNewVehicle(
+      String manufacturer,
+      String model,
+      int horsepower,
+      int displacement,
+      DateTime registrationDate,
+      FuelType fuel,
+      int manufactionYear) {
+    final veh = Vehicle(
+        id: _garage.length,
+        manufacturer: manufacturer,
+        model: model,
+        horsepower: horsepower,
+        displacement: displacement,
+        registrationDate: registrationDate,
+        fuel: fuel,
+        manufactionYear: manufactionYear);
+
+    setState(() {
+      _garage.add(veh);
+    });
+  }
+
+  void _startAddNewVehicle(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      isScrollControlled: true,
+      builder: (_) {
+        return GestureDetector(
+          onTap: () {},
+          child: NewVehicle(_addNewVehicle),
+          behavior: HitTestBehavior.opaque,
+        );
+      },
     );
   }
 }

@@ -45,6 +45,8 @@ class _NewVehicleState extends State<NewVehicle> {
     final horsepower = int.parse(_hpController.text);
     final displacement = int.parse(_dspController.text);
     final manufactionYear = int.parse(_yearController.text);
+    if (manufactionYear < 1900 || horsepower <= 0 || displacement <= 0) return;
+
     late final FuelType fuel;
     final fl = _fuelController.text;
     switch (fl) {

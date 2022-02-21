@@ -12,13 +12,6 @@ class GarageScreen extends StatefulWidget {
 }
 
 class _GarageScreenState extends State<GarageScreen> {
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
-  }
-
   final List<Vehicle> _garage = [
     Vehicle(
         id: 1,

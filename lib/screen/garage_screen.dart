@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../model/vehicle.dart';
 import '../widget/garage_item.dart';
 import '../widget/new_vehicle.dart';
@@ -11,6 +12,13 @@ class GarageScreen extends StatefulWidget {
 }
 
 class _GarageScreenState extends State<GarageScreen> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
+  }
+
   final List<Vehicle> _garage = [
     Vehicle(
         id: 1,
@@ -49,7 +57,7 @@ class _GarageScreenState extends State<GarageScreen> {
         fuel: FuelType.electric,
         manufactionYear: 2021),
   ];
-  void placeholder() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

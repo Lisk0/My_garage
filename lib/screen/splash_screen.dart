@@ -11,7 +11,12 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (_) => const GarageScreen()));
+        MaterialPageRoute(
+          builder: (_) {
+            return const GarageScreen();
+          },
+        ),
+      );
     });
     return Scaffold(
       backgroundColor: Colors.blue,

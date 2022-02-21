@@ -48,6 +48,15 @@ class _GarageScreenState extends State<GarageScreen> {
         registrationDate: DateTime.parse("2018-04-22"),
         fuel: FuelType.electric,
         manufactionYear: 2021),
+    Vehicle(
+        id: DateTime(2005).toString(),
+        manufacturer: 'Petar',
+        model: 'A4',
+        horsepower: 145,
+        displacement: 1600,
+        registrationDate: DateTime.parse("2021-02-28"),
+        fuel: FuelType.gasoline,
+        manufactionYear: 2015),
   ];
 
   @override

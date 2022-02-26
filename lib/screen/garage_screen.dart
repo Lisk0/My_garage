@@ -18,9 +18,10 @@ class _GarageScreenState extends State<GarageScreen> {
 
   @override
   void initState() {
+    super.initState();
     database= DbVehicles(garageGet: _getList);
     database.initDb();
-    super.initState();
+    
   }
 
   @override

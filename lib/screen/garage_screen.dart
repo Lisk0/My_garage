@@ -20,7 +20,6 @@ class _GarageScreenState extends State<GarageScreen> {
   void initState() {
     super.initState();
     database= DbVehicles(garageGet: _getList);
-    database.initDb();
     
   }
 

@@ -15,7 +15,7 @@ class DbVehicles{
         model: 'A4',
         horsepower: 145,
         displacement: 1600,
-        registrationDate: DateTime.parse("2021-02-28"),
+        registrationDate: DateTime(DateTime.now().add(Duration(days: 9)).year-1, DateTime.now().add(Duration(days: 9)).month, DateTime.now().add(Duration(days: 9)).day),
         fuel: FuelType.gasoline,
         manufactionYear: 2011),
     Vehicle(
@@ -24,7 +24,7 @@ class DbVehicles{
         model: 'Golf 5',
         horsepower: 90,
         displacement: 1997,
-        registrationDate: DateTime.parse("2021-07-25"),
+        registrationDate: DateTime.now(),
         fuel: FuelType.diesel,
         manufactionYear: 2007),
     Vehicle(
@@ -120,11 +120,12 @@ class DbVehicles{
     },
 
     onOpen: (db){
-      garageGet();
+      
     },
 
     version: 1,
   );
 
+  garageGet();
   }
 }

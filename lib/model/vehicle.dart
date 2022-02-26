@@ -19,4 +19,19 @@ class Vehicle {
       required this.registrationDate,
       required this.fuel,
       required this.manufactionYear});
+
+  Map<String, dynamic> toMap(){
+    return {
+      'id': id,
+      'manufacturer': manufacturer,
+      'model' : model,
+      'horsepower' : horsepower,
+      'displacement': displacement,
+      'registrationDate': registrationDate.toString(),
+      'fuel': fuel.name,
+      'manufactionYear': manufactionYear
+    };
+  }
+
+
 }

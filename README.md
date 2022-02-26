@@ -28,6 +28,8 @@
 
 Project that shows the garage with user vehicles. You have option to remove and add vehicles.
 
+When first opening the application the database will be created and filled with sample data. On vehicle screen you can see the data about vehicle and colored representation of registration expiration (green - more then 14 days until licence expires, yellow - between 1 and 14 days, red - licence expired).
+
 
 
 Application consists of three screens: 

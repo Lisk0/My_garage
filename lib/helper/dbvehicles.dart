@@ -3,9 +3,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import '../model/vehicle.dart';
 
-class DbVehicles{
-
-  late var database;
+class DbVehicles {
+  late Future<Database> database;
   final Function garageGet;
 
   final List<Vehicle> _data = [
@@ -15,7 +14,10 @@ class DbVehicles{
         model: 'A4',
         horsepower: 145,
         displacement: 1600,
-        registrationDate: DateTime(DateTime.now().add(Duration(days: 9)).year-1, DateTime.now().add(Duration(days: 9)).month, DateTime.now().add(Duration(days: 9)).day),
+        registrationDate: DateTime(
+            DateTime.now().add(const Duration(days: 9)).year - 1,
+            DateTime.now().add(const Duration(days: 9)).month,
+            DateTime.now().add(const Duration(days: 9)).day),
         fuel: FuelType.gasoline,
         manufactionYear: 2011),
     Vehicle(
@@ -56,76 +58,71 @@ class DbVehicles{
         manufactionYear: 2015),
   ];
 
-  DbVehicles({required this.garageGet}){
+  DbVehicles({required this.garageGet}) {
     initDb();
   }
-  
-  void insertDb (Vehicle x) async{
+
+  void insertDb(Vehicle x) async {
     final db = await database;
     await db.insert(
-    'vehicles',
-    x.toMap(),
-    conflictAlgorithm: ConflictAlgorithm.ignore,
-  );
+      'vehicles',
+      x.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.ignore,
+    );
   }
 
-  void deleteDb(String id) async{
+  void deleteDb(String id) async {
     final db = await database;
 
     await db.delete(
-    'vehicles',
-    where: 'id = ?',
-    whereArgs: [id],
-  );
+      'vehicles',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 
-  Future<List<Vehicle>> allVehiclesDb () async{
+  Future<List<Vehicle>> allVehiclesDb() async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('vehicles');
 
     return List.generate(maps.length, (i) {
-      var fuel= FuelType.diesel;
-      if(maps[i]['fuel']==FuelType.electric.name) fuel=FuelType.electric;
-      else if(maps[i]['fuel']==FuelType.gasoline.name)fuel=FuelType.gasoline;
-
-    return Vehicle(
-      id: maps[i]['id'],
-      manufacturer: maps[i]['manufacturer'],
-      model: maps[i]['model'],
-      horsepower: maps[i]['horsepower'],
-      displacement: maps[i]['displacement'],
-      registrationDate: DateTime.parse(maps[i]['registrationDate']),
-      fuel: fuel,
-      manufactionYear: maps[i]['manufactionYear']
-    );
-  });
-  }
-
-  void initDb() async{
-    database = openDatabase(
-
-    join(await getDatabasesPath(), 'vehicles_database.db'),
-
-    onCreate: (db, version) {
-
-      db.execute(
-        'CREATE TABLE vehicles(id TEXT PRIMARY KEY, manufacturer TEXT, model TEXT, horsepower INTEGER, displacement INTEGER, registrationDate TEXT, fuel TEXT, manufactionYear INTEGER)',
-      );
-      
-      for(Vehicle item in _data){
-       db.insert('vehicles', item.toMap());
+      var fuel = FuelType.diesel;
+      if (maps[i]['fuel'] == FuelType.electric.name) {
+        fuel = FuelType.electric;
+      } else if (maps[i]['fuel'] == FuelType.gasoline.name) {
+        fuel = FuelType.gasoline;
       }
 
-      return ;
-    },
+      return Vehicle(
+          id: maps[i]['id'],
+          manufacturer: maps[i]['manufacturer'],
+          model: maps[i]['model'],
+          horsepower: maps[i]['horsepower'],
+          displacement: maps[i]['displacement'],
+          registrationDate: DateTime.parse(maps[i]['registrationDate']),
+          fuel: fuel,
+          manufactionYear: maps[i]['manufactionYear']);
+    });
+  }
 
-    onOpen: (db){
-      
-    },
+  void initDb() async {
+    database = openDatabase(
+      join(await getDatabasesPath(), 'vehicles_database.db'),
+      onCreate: (db, version) {
+        db.execute(
+          'CREATE TABLE vehicles(id TEXT PRIMARY KEY, manufacturer TEXT, model TEXT, horsepower INTEGER, displacement INTEGER, registrationDate TEXT, fuel TEXT, manufactionYear INTEGER)',
+        );
 
-    version: 1,
-  );
+        for (Vehicle item in _data) {
+          db.insert('vehicles', item.toMap());
+        }
 
-  garageGet();
+        return;
+      },
+      onOpen: (db) {},
+      version: 1,
+    );
+
+    garageGet();
   }
 }

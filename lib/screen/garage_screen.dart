@@ -12,15 +12,13 @@ class GarageScreen extends StatefulWidget {
 }
 
 class _GarageScreenState extends State<GarageScreen> {
-  List<Vehicle> _garage=[];
-  late final database;
-  
+  List<Vehicle> _garage = [];
+  late final DbVehicles database;
 
   @override
   void initState() {
     super.initState();
-    database= DbVehicles(garageGet: _getList);
-    
+    database = DbVehicles(garageGet: _getList);
   }
 
   @override
@@ -107,12 +105,13 @@ class _GarageScreenState extends State<GarageScreen> {
     });
   }
 
-
-  void _getList() async{
-    var dbdata= await database.allVehiclesDb();
+  void _getList() async {
+    var dbdata = await database.allVehiclesDb();
     setState(() {
-      _garage=dbdata;
+      _garage = dbdata;
     });
-    for(var item in _garage) print(item.model);
+    for (var item in _garage) {
+      print(item.model);
+    }
   }
 }
